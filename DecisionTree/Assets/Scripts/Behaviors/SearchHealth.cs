@@ -31,7 +31,7 @@ public class SearchHealth : Action {
     }
 
 
-    public override void Update() {
+    public override void LateUpdate() {
         if (!character.IsHealthy())
             character.MoveTo(FindNearestPack());
         else {

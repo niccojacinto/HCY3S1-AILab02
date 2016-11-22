@@ -31,7 +31,7 @@ public class SearchEnergy : Action {
     }
 
 
-    public override void Update() {
+    public override void LateUpdate() {
 
         if (character.IsTired())
             character.MoveTo(FindNearestPill());

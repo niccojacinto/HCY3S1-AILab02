@@ -7,7 +7,7 @@ public class Idle : Action {
         actionName = "Idle";
         character.ChangeStatus(actionName);
     }
-    public override void Update () {
+    public override void LateUpdate () {
 	    if (character.IsHealthy()) {
             character.ChangeState(new SearchEnemy(character));
         } else if (!character.IsHealthy()) {

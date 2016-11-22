@@ -32,7 +32,7 @@ public class SearchEnemy : Action {
     }
 
 
-    public override void Update() {
+    public override void LateUpdate() {
         Vector3 d = FindNearestEnemy();
         if (!character.IsHealthy()) character.ChangeState(new SearchHealth(character));
         else {

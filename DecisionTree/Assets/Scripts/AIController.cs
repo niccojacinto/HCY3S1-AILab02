@@ -10,9 +10,9 @@ public class AIController : Character {
         currentBehavior = new Idle(GetComponent<Character>());
     }
 	
-	protected override void Update () {
+	protected void Update () {
         base.Update();
-        currentBehavior.Update();
+        currentBehavior.LateUpdate();
 	}
 
     public override void ChangeState(Action action) {

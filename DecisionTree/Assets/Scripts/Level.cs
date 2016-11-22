@@ -24,8 +24,8 @@ public class Level : MonoBehaviour {
         levelWidth = GetComponent<Renderer>().bounds.size.x;
         levelHeight = GetComponent<Renderer>().bounds.size.z;
 
-        // GameObject player = Instantiate(playerPrefab, GetRandomLocation(), Quaternion.identity) as GameObject;
-        // allCharacters.Add(player.GetComponent<Character>());
+        GameObject player = Instantiate(playerPrefab, GetRandomLocation(), Quaternion.identity) as GameObject;
+        allCharacters.Add(player.GetComponent<Character>());
 
         for (int i=0; i<numEnemies; ++i) {
             GameObject enemy = Instantiate(aiPrefab, GetRandomLocation(), Quaternion.identity) as GameObject;
