@@ -4,18 +4,20 @@ using System.Collections;
 public class AIController : Character {
 
     protected Action currentBehavior;
+    private DecisionTree decisionTree;
 
 	protected override void Start () {
         base.Start();
-        currentBehavior = new Idle(GetComponent<Character>());
+        decisionTree = GetComponent<DecisionTree>();
+        //currentBehavior = new Idle(GetComponent<Character>());
     }
 	
 	protected void Update () {
         base.Update();
-        currentBehavior.LateUpdate();
+        //currentBehavior.LateUpdate();
 	}
 
     public override void ChangeState(Action action) {
-        currentBehavior = action;
+        //currentBehavior = action;
     }
 }

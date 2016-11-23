@@ -13,6 +13,7 @@ public class Level : MonoBehaviour {
     public static float levelHeight;
 
     public static List<Character> allCharacters;
+    public static PlayerController playerRef;
     public static List<Pickup> allPickups;
 
     private float numEnemies = 3;
@@ -26,7 +27,9 @@ public class Level : MonoBehaviour {
 
         GameObject player = Instantiate(playerPrefab, GetRandomLocation(), Quaternion.identity) as GameObject;
         allCharacters.Add(player.GetComponent<Character>());
+        playerRef = player.GetComponent<PlayerController>();
 
+        Debug.Log("player spawned");
         for (int i=0; i<numEnemies; ++i) {
             GameObject enemy = Instantiate(aiPrefab, GetRandomLocation(), Quaternion.identity) as GameObject;
             allCharacters.Add(enemy.GetComponent<Character>());
