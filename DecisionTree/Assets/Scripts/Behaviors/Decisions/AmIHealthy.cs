@@ -6,7 +6,7 @@ public class AmIHealthy : Decision
 
     public int healthy = 50;
 
-    public override Action GetBranch()
+    public override DecisionTreeNode GetBranch()
     {
         if (GetComponent<AIController>().health > healthy)
         {

@@ -5,7 +5,7 @@ public class IsEnemyClose : Decision {
 
     public float nearDistance = 5.0f;
 
-    public override Action GetBranch()
+    public override DecisionTreeNode GetBranch()
     {
         if (Vector3.Distance(transform.position, Level.playerRef.transform.position) < nearDistance)
         {

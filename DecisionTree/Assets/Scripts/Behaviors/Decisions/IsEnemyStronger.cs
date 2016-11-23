@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IsEnemyStronger : MonoBehaviour {
+public class IsEnemyStronger : Decision {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public override DecisionTreeNode GetBranch()
+    {
+        if(Level.playerRef.health > GetComponent<AIController>().health)
+        {
+            return nodeTrue;
+        }
+        else
+        {
+            return nodeFalse;
+        }
+    }
 }

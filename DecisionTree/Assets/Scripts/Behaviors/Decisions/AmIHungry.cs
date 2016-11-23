@@ -5,7 +5,7 @@ public class AmIHungry : Decision
 {
     public int hunger = 50;
 
-    public override Action GetBranch()
+    public override DecisionTreeNode GetBranch()
     {
         if(GetComponent<AIController>().energy < hunger)
         {

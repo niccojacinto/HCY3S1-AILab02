@@ -5,7 +5,7 @@ public class CanSeeEnemy : Decision {
 
     public float searchRadius = 10.0f;
 
-    public override Action GetBranch()
+    public override DecisionTreeNode GetBranch()
     {
         if(Vector3.Distance(transform.position, Level.playerRef.transform.position) < searchRadius)
         {

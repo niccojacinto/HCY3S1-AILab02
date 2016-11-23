@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RandomDecision : MonoBehaviour {
+public class RandomDecision : Decision {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public override DecisionTreeNode GetBranch()
+    {
+        if (Random.Range(0, 2) == 0)
+        {
+            return nodeTrue;
+        }
+        else
+        {
+            return nodeFalse;
+        }
+    }
 }

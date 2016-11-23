@@ -4,6 +4,7 @@ using System.Collections;
 public class DecisionTree : DecisionTreeNode {
 
     public DecisionTreeNode root;
+
     private Action actionNew;
     private Action actionOld;
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class AIController : Character {
 
     protected Action currentBehavior;
-    private DecisionTree decisionTree;
+    public DecisionTree decisionTree;
 
 	protected override void Start () {
         base.Start();
@@ -12,7 +12,7 @@ public class AIController : Character {
         //currentBehavior = new Idle(GetComponent<Character>());
     }
 	
-	protected void Update () {
+	protected override void Update () {
         base.Update();
         //currentBehavior.LateUpdate();
 	}

@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Decision : DecisionTreeNode {
 
-    public Action nodeTrue;
-    public Action nodeFalse;
+    public DecisionTreeNode nodeTrue;
+    public DecisionTreeNode nodeFalse;
 
-    public virtual Action GetBranch()
+    public virtual DecisionTreeNode GetBranch()
     {
         return null;
     }
