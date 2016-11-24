@@ -75,6 +75,17 @@ public class Level : MonoBehaviour {
         return new Vector3(x, y, z);
     }
 
+    private static bool PointIsOutsideLevel(Vector3 v3) {
+
+        if (v3.x < levelPosition.x - levelWidth / 2 ||
+             v3.x > levelPosition.x + levelWidth / 2 ||
+             v3.z < levelPosition.z - levelHeight / 2 ||
+             v3.z > levelPosition.z + levelHeight / 2)
+            return true;
+
+        return false;
+    }
+
     // Helper: Spawns @param spawnable at given location
     void SpawnPickup(GameObject spawnable, Vector3 location) {
         GameObject p = Instantiate(spawnable, location, Quaternion.identity) as GameObject;

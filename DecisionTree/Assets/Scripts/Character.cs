@@ -57,8 +57,14 @@ public class Character : MonoBehaviour {
         textStatus.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.0f);
         textStatus.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
 
+
+
         UpdateUI();
         DrainEnergy();
+    }
+
+    protected virtual void FixedUpdate() {
+        transform.position = KeepWithinLevelBounds(transform.position);
     }
 
    private void UpdateUI () {
@@ -120,8 +126,12 @@ public class Character : MonoBehaviour {
         UpdateUI();
     }
 
-    public virtual void ChangeState(Action action) {
+    private Vector3 KeepWithinLevelBounds(Vector3 point) {
+        float x = Mathf.Clamp(point.x, Level.levelPosition.x - Level.levelWidth / 2, Level.levelPosition.y + Level.levelWidth  / 2);
+        float z = Mathf.Clamp(point.z, Level.levelPosition.z - Level.levelHeight / 2, Level.levelPosition.y + Level.levelHeight / 2);
+        float y = Level.levelPosition.y + 1.0f;
 
+        return new Vector3(x, y, z);
     }
 
     public virtual void ChangeStatus(string s) {
