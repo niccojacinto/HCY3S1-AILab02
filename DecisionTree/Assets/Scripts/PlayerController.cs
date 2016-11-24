@@ -3,6 +3,12 @@ using System.Collections;
 
 public class PlayerController : Character {
 
+    protected override void Start()
+    {
+        base.Start();
+        ChangeStatus("Player");
+    }
+
 	protected override void Update () {
         base.Update();
         HandleInput();

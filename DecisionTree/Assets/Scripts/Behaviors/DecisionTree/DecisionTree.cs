@@ -3,21 +3,28 @@ using System.Collections;
 
 public class DecisionTree : DecisionTreeNode {
 
-    public DecisionTreeNode root;
+    public Decision root;
 
-    private Action actionNew;
-    private Action actionOld;
+    private Decision actionNew;
+    private Decision actionOld;
+
+    void Start()
+    {
+        actionNew = MakeDecision() as Decision;
+        actionOld = actionNew;
+        actionNew.activated = true;
+    }
 
     public override DecisionTreeNode MakeDecision()
     {
-        return root.MakeDecision();
+        return root.GetBranch();
     }
 
     void Update()
     {
         actionNew.activated = false;
         actionOld = actionNew;
-        actionNew = root.MakeDecision() as Action;
+        actionNew = root.MakeDecision() as Decision;
         if(actionNew == null)
         {
             actionNew = actionOld;

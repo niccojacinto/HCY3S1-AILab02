@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Reflection;
 
 public class AIController : Character {
 
-    protected Action currentBehavior;
+    protected DecisionTreeNode currentBehavior;
     public DecisionTree decisionTree;
 
 	protected override void Start () {
         base.Start();
-        decisionTree = GetComponent<DecisionTree>();
-        //currentBehavior = new Idle(GetComponent<Character>());
+        StartCoroutine("Do");
     }
 	
 	protected override void Update () {
         base.Update();
-        //currentBehavior.LateUpdate();
+        
+        Debug.Log(currentBehavior.nodeName);
 	}
 
-    public override void ChangeState(Action action) {
-        //currentBehavior = action;
+    void Do()
+    {
+        currentBehavior = decisionTree.MakeDecision();
     }
-}
+} 

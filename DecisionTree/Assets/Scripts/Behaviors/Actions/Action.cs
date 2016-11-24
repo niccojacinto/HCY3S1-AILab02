@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Action : DecisionTreeNode {
-
-    public bool activated = false;
+public class Action : Decision {
 
     public override DecisionTreeNode MakeDecision()
     {

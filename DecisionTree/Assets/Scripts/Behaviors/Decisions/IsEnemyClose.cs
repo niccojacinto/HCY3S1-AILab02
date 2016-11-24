@@ -5,8 +5,16 @@ public class IsEnemyClose : Decision {
 
     public float nearDistance = 5.0f;
 
+    void Start()
+    {
+        nodeName = "Is the Enemy Close?";
+
+    }
+
     public override DecisionTreeNode GetBranch()
     {
+        //GetComponent<AIController>().ChangeStatus(nodeName);
+
         if (Vector3.Distance(transform.position, Level.playerRef.transform.position) < nearDistance)
         {
             return nodeTrue;

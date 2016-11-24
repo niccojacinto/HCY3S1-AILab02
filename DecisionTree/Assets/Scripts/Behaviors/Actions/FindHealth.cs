@@ -3,39 +3,40 @@ using System.Collections;
 
 public class FindHealth : Action {
 
-    //public SearchHealth(Character _character) : base(_character) {
-    //    actionName = "Searching for Health";
-    //    character.ChangeStatus(actionName);
-    //}
+    void Start()
+    {
+        nodeName = "Find Health";
+    }
 
-    //private Vector3 FindNearestPack() {
-    //    Vector3 nearest = Vector3.zero;
-    //    float distance = 9999.0f;
+    private Vector3 FindNearestPack()
+    {
+        Vector3 nearest = Vector3.zero;
+        float distance = 9999.0f;
 
-    //    foreach (Pickup pickup in Level.allPickups) {
-    //        if (pickup == null) continue;
+        foreach (Pickup pickup in Level.allPickups)
+        {
+            if (pickup == null) continue;
 
-    //        if (pickup is HealthPack) {
+            if (pickup is HealthPack)
+            {
 
-    //            float currentDist = Vector3.Distance(character.transform.position, pickup.transform.position);
+                float currentDist = Vector3.Distance(GetComponent<AIController>().transform.position, pickup.transform.position);
 
-    //            if (currentDist < distance) {
-    //                nearest = pickup.transform.position;
-    //                distance = currentDist;
-    //            }
-    //        }
+                if (currentDist < distance)
+                {
+                    nearest = pickup.transform.position;
+                    distance = currentDist;
+                }
+            }
 
-    //    }
+        }
 
-    //    return nearest;
-    //}
+        return nearest;
+    }
 
-
-    //public override void LateUpdate() {
-    //    if (!character.IsHealthy())
-    //        character.MoveTo(FindNearestPack());
-    //    else {
-    //        character.ChangeState(new Idle(character));
-    //    }
-    //}
+    public override void LateUpdate()
+    {
+        GetComponent<AIController>().ChangeStatus(nodeName);
+        GetComponent<AIController>().MoveTo(FindNearestPack());
+    }
 }

@@ -5,9 +5,16 @@ public class AmIHungry : Decision
 {
     public int hunger = 50;
 
+    void Start()
+    {
+        nodeName = "Am I Hungry";
+    }
+
     public override DecisionTreeNode GetBranch()
     {
-        if(GetComponent<AIController>().energy < hunger)
+        //GetComponent<AIController>().ChangeStatus(nodeName);
+
+        if (GetComponent<AIController>().energy < hunger)
         {
             return nodeTrue;
         }

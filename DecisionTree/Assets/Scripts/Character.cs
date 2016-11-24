@@ -5,9 +5,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody))]
 public class Character : MonoBehaviour {
 
-    private GameObject healthBar;
-    private GameObject energyBar;
-    private GameObject textStatus;
+    protected GameObject healthBar;
+    protected GameObject energyBar;
+    protected GameObject textStatus;
 
     private const float barWidth = 1.0f;
     private const float barHeight = 0.1f;
@@ -15,9 +15,9 @@ public class Character : MonoBehaviour {
 
     public float health = 100.0f;
     public float energy = 100.0f;
-    protected float linearSpeed = 10.0f; // units per second
+    protected float linearSpeed = 5.0f; // units per second
     protected float angularSpeed = 180.0f; // degrees per second
-    protected const float energyDecay = 5.0f; // per second
+    protected const float energyDecay = 1.0f; // per second
 
     private const float attackCooldown = 2.0f;
     private float attackDelay = 0.0f;
@@ -53,14 +53,14 @@ public class Character : MonoBehaviour {
         energyBar.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.0f);
         energyBar.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.forward);
 
-        textStatus.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.0f);
+        textStatus.transform.position = new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z - 1.0f);
         textStatus.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
 
         UpdateUI();
         DrainEnergy();
     }
 
-   private void UpdateUI () {
+   protected virtual void UpdateUI () {
         healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(health / 100 * barWidth, barHeight);
         energyBar.GetComponent<RectTransform>().sizeDelta = new Vector2(energy / 100 * barWidth, barHeight);
     }
@@ -71,18 +71,9 @@ public class Character : MonoBehaviour {
         UpdateUI();
     }
 
-    public virtual bool IsHealthy() {
-        return health >= 50;
-    }
-
-    public virtual bool IsTired() {
-        return energy <= 50;
-    }
-
     void OnTriggerEnter(Collider other) {
         other.GetComponent<Pickup>().OnPickup(this);
     }
-
 
     public void AddHealth(float amount) {
         health += amount;
@@ -95,7 +86,7 @@ public class Character : MonoBehaviour {
     }
 
     public void MoveTo(Vector3 location) {
-        transform.LookAt(location);
+        transform.LookAt(new Vector3(location.x, 1, location.z));
         transform.Translate(Vector3.forward * linearSpeed * Time.deltaTime);
     }
 
@@ -103,8 +94,8 @@ public class Character : MonoBehaviour {
         if (attackDelay >= 0) return;
         attackDelay = attackCooldown;
         RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.forward * 2.0f, out hit)) {
+        Debug.Log("Attack");
+        if (Physics.SphereCast(transform.position, 5.0f, Vector3.forward, out hit)) {
             Character c = hit.collider.GetComponent<Character>();
             if (c != null) {
                 c.TakeDamage(10);
@@ -117,10 +108,6 @@ public class Character : MonoBehaviour {
         damageFlashDelay = takeDamgeColorFlash;
         health -= amount;
         UpdateUI();
-    }
-
-    public virtual void ChangeState(Action action) {
-
     }
 
     public virtual void ChangeStatus(string s) {

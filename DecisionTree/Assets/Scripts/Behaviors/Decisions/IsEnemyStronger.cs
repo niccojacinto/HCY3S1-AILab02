@@ -3,9 +3,16 @@ using System.Collections;
 
 public class IsEnemyStronger : Decision {
 
+    void Start()
+    {
+        nodeName = "Is the Enemy Stronger";
+    }
+
     public override DecisionTreeNode GetBranch()
     {
-        if(Level.playerRef.health > GetComponent<AIController>().health)
+        //GetComponent<AIController>().ChangeStatus(nodeName);
+
+        if (Level.playerRef.health > GetComponent<AIController>().health)
         {
             return nodeTrue;
         }
