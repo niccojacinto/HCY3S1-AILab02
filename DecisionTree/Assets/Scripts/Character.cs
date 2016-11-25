@@ -19,14 +19,16 @@ public class Character : MonoBehaviour {
     protected float angularSpeed = 180.0f; // degrees per second
     protected const float energyDecay = 1.0f; // per second
 
-    private const float attackCooldown = 2.0f;
-    private float attackDelay = 0.0f;
+    public int attackDamage = 10;
+    public float attackRadius = 5.0f;
+    protected const float attackCooldown = 2.0f;
+    protected float attackDelay = 3.0f;
     private const float takeDamgeColorFlash = 0.5f;
     private float damageFlashDelay = 0.0f;
     private Color defaultColor;
 
     protected virtual void Start () {
-        GetComponent<Rigidbody>().isKinematic = true;
+        //GetComponent<Rigidbody>().isKinematic = true;
         defaultColor = GetComponent<Renderer>().material.color;
 
         Object healthBarObject = Resources.Load<GameObject>("HealthBar");
@@ -90,16 +92,21 @@ public class Character : MonoBehaviour {
         transform.Translate(Vector3.forward * linearSpeed * Time.deltaTime);
     }
 
-    public void AttackForward() {
+    public virtual void AttackForward() {
         if (attackDelay >= 0) return;
         attackDelay = attackCooldown;
-        RaycastHit hit;
-        //Debug.Log("Attack");
-        if (Physics.SphereCast(transform.position, 5.0f, Vector3.forward, out hit)) {
-            Character c = hit.collider.GetComponent<Character>();
-            if (c != null) {
-                c.TakeDamage(10);
-            }
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRadius);
+        {
+            for(int i = 0; i < hitColliders.Length; ++i)
+            {
+                PlayerController c = hitColliders[i].GetComponent<PlayerController>();
+                if(c != null && c != this)
+                {
+                    if(c.health <= health)
+                        c.TakeDamage(attackDamage);
+                }
+            }            
         }
     }
 
