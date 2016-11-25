@@ -12,13 +12,13 @@ public class IsEnemyStronger : Decision {
     {
         //GetComponent<AIController>().ChangeStatus(nodeName);
 
-        if (Level.playerRef.GetComponent<PlayerController>().health > GetComponent<AIController>().health)
+        if (GetComponent<AIController>().health >= Level.playerRef.GetComponent<PlayerController>().health)
         {
-            return nodeTrue;
+            return nodeFalse;
         }
         else
         {
-            return nodeFalse;
+            return nodeTrue;
         }
     }
 }

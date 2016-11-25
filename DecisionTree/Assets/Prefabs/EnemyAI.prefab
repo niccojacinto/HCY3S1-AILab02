@@ -73,7 +73,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8e7fe1c90d01cbd49aa5d3f4087df491, type: 2}
+  - {fileID: 2100000, guid: 9e1e64e6ca7bce94a9527fe087b3ecd8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -137,7 +137,6 @@ MonoBehaviour:
   nodeName: 
   nodeTrue: {fileID: 114000012915164606}
   nodeFalse: {fileID: 114000012363844388}
-  activated: 0
 --- !u!114 &114000011158499634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,7 +151,6 @@ MonoBehaviour:
   nodeName: 
   nodeTrue: {fileID: 114000011441362178}
   nodeFalse: {fileID: 114000012606880086}
-  activated: 0
   hunger: 50
   healthy: 50
 --- !u!114 &114000011324726696
@@ -167,9 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: 
-  nodeTrue: {fileID: 114000012250801912}
-  nodeFalse: {fileID: 114000012038419986}
-  activated: 0
+  nodeTrue: {fileID: 114000012038419986}
+  nodeFalse: {fileID: 114000012250801912}
 --- !u!114 &114000011441362178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,8 +179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: 
-  nodeTrue: {fileID: 0}
-  nodeFalse: {fileID: 0}
   activated: 0
 --- !u!114 &114000011483601934
 MonoBehaviour:
@@ -199,8 +194,7 @@ MonoBehaviour:
   nodeName: 
   nodeTrue: {fileID: 114000013562060182}
   nodeFalse: {fileID: 114000013222740794}
-  activated: 0
-  searchRadius: 5
+  searchRadius: 10
 --- !u!114 &114000011870994378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,7 +209,6 @@ MonoBehaviour:
   nodeName: 
   nodeTrue: {fileID: 114000011924869862}
   nodeFalse: {fileID: 114000010390131862}
-  activated: 0
   hunger: 50
 --- !u!114 &114000011924869862
 MonoBehaviour:
@@ -229,8 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: 
-  nodeTrue: {fileID: 0}
-  nodeFalse: {fileID: 0}
   activated: 0
 --- !u!114 &114000012038419986
 MonoBehaviour:
@@ -244,8 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: 
-  nodeTrue: {fileID: 0}
-  nodeFalse: {fileID: 0}
   activated: 0
 --- !u!114 &114000012250801912
 MonoBehaviour:
@@ -259,8 +248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: 
-  nodeTrue: {fileID: 0}
-  nodeFalse: {fileID: 0}
   activated: 0
 --- !u!114 &114000012363844388
 MonoBehaviour:
@@ -274,9 +261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: 
-  nodeTrue: {fileID: 0}
-  nodeFalse: {fileID: 0}
   activated: 0
+  patrolDistance: 5
 --- !u!114 &114000012606880086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,7 +277,6 @@ MonoBehaviour:
   nodeName: 
   nodeTrue: {fileID: 114000011924869862}
   nodeFalse: {fileID: 114000013232079852}
-  activated: 0
 --- !u!114 &114000012915164606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,8 +289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: 
-  nodeTrue: {fileID: 0}
-  nodeFalse: {fileID: 0}
   activated: 0
 --- !u!114 &114000012957146526
 MonoBehaviour:
@@ -320,6 +303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   energy: 100
+  attackDamage: 10
+  attackRadius: 5
   decisionTree: {fileID: 114000013798169518}
 --- !u!114 &114000013222740794
 MonoBehaviour:
@@ -335,7 +320,6 @@ MonoBehaviour:
   nodeName: 
   nodeTrue: {fileID: 114000011870994378}
   nodeFalse: {fileID: 114000013232079852}
-  activated: 0
   healthy: 50
 --- !u!114 &114000013232079852
 MonoBehaviour:
@@ -349,8 +333,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: 
-  nodeTrue: {fileID: 0}
-  nodeFalse: {fileID: 0}
   activated: 0
 --- !u!114 &114000013562060182
 MonoBehaviour:
@@ -366,8 +348,7 @@ MonoBehaviour:
   nodeName: 
   nodeTrue: {fileID: 114000011324726696}
   nodeFalse: {fileID: 114000011158499634}
-  activated: 0
-  nearDistance: 2
+  nearDistance: 5
 --- !u!114 &114000013798169518
 MonoBehaviour:
   m_ObjectHideFlags: 1

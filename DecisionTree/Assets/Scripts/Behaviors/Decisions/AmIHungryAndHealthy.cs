@@ -15,7 +15,7 @@ public class AmIHungryAndHealthy : Decision {
     {
         //GetComponent<AIController>().ChangeStatus(nodeName);
 
-        if (GetComponent<AIController>().health > healthy && GetComponent<AIController>().energy < hunger)
+        if (GetComponent<AIController>().health > healthy && GetComponent<AIController>().energy > hunger)
         {
             return nodeTrue;
         }

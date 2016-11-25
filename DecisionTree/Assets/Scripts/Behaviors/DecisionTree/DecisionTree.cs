@@ -26,7 +26,7 @@ public class DecisionTree : DecisionTreeNode {
     {
         elapsed += Time.deltaTime;
 
-        if(elapsed >= 2.0f)
+        if(elapsed >= 0.0f)
         {
             actionNew.activated = false;
             actionOld = actionNew;
@@ -36,7 +36,6 @@ public class DecisionTree : DecisionTreeNode {
                 actionNew = actionOld;
                 actionNew.activated = true;
             }
-
             elapsed = 0f;
         }
     }

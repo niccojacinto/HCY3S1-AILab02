@@ -16,7 +16,7 @@ public class Level : MonoBehaviour {
     public static GameObject playerRef;
     public static List<Pickup> allPickups;
 
-    private float numEnemies = 1;
+    private float numEnemies = 3;
 
     void Start() {
         allCharacters = new List<Character>();

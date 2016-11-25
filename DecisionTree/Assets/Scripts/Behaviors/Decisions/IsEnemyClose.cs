@@ -3,7 +3,7 @@ using System.Collections;
 
 public class IsEnemyClose : Decision {
 
-    public float nearDistance = 5.0f;
+    public float nearDistance = 2.5f;
 
     void Start()
     {
