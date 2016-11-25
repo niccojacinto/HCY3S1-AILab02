@@ -4,11 +4,7 @@ using System.Reflection;
 
 public class DecisionTreeNode : MonoBehaviour {
 
-    public string nodeName = "";
-
-    void Start()
-    {
-    }
+    public string nodeName = "null";
 
     public virtual DecisionTreeNode MakeDecision()
     {

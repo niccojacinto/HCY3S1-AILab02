@@ -3,32 +3,60 @@ using System.Collections;
 
 public class DecisionTree : DecisionTreeNode {
 
-    public Decision root;
+    public DecisionTreeNode root;
 
-    private Decision actionNew;
-    private Decision actionOld;
+    private Action actionNew;
+    private Action actionOld;
+
+    float elapsed;
 
     void Start()
     {
-        actionNew = MakeDecision() as Decision;
+        actionNew = TraverseTree();
         actionOld = actionNew;
         actionNew.activated = true;
     }
 
     public override DecisionTreeNode MakeDecision()
     {
-        return root.GetBranch();
+        return root.MakeDecision();
     }
 
     void Update()
     {
-        actionNew.activated = false;
-        actionOld = actionNew;
-        actionNew = root.MakeDecision() as Decision;
-        if(actionNew == null)
+        elapsed += Time.deltaTime;
+
+        if(elapsed >= 2.0f)
         {
-            actionNew = actionOld;
-            actionNew.activated = true;
+            actionNew.activated = false;
+            actionOld = actionNew;
+            actionNew = TraverseTree();
+            if (actionNew == null)
+            {
+                actionNew = actionOld;
+                actionNew.activated = true;
+            }
+
+            elapsed = 0f;
         }
+    }
+
+    public Action GetAction()
+    {
+        return actionNew;
+    }
+
+    Action TraverseTree()
+    {
+        DecisionTreeNode action = root.MakeDecision();
+
+        while(action as Decision)
+        {
+            action = action.MakeDecision();
+        }
+
+        GetComponent<Character>().ChangeStatus(action.nodeName);
+
+        return action as Action;
     }
 }

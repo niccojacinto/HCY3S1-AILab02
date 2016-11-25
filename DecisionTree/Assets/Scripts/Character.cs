@@ -94,7 +94,7 @@ public class Character : MonoBehaviour {
         if (attackDelay >= 0) return;
         attackDelay = attackCooldown;
         RaycastHit hit;
-        Debug.Log("Attack");
+        //Debug.Log("Attack");
         if (Physics.SphereCast(transform.position, 5.0f, Vector3.forward, out hit)) {
             Character c = hit.collider.GetComponent<Character>();
             if (c != null) {

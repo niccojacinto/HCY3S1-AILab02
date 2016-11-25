@@ -15,7 +15,7 @@ public class Flee : Action {
 
     public override void LateUpdate()
     {
-        GetComponent<AIController>().ChangeStatus(nodeName);
+        //GetComponent<AIController>().ChangeStatus(nodeName);
         GetComponent<AIController>().MoveTo(FleeEnemy());
     }
 

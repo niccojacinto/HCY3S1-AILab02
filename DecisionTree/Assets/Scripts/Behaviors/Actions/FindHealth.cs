@@ -36,7 +36,7 @@ public class FindHealth : Action {
 
     public override void LateUpdate()
     {
-        GetComponent<AIController>().ChangeStatus(nodeName);
+        //GetComponent<AIController>().ChangeStatus(nodeName);
         GetComponent<AIController>().MoveTo(FindNearestPack());
     }
 }
